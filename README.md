@@ -1,0 +1,2 @@
+# AutoSkipper
+認証画面を自動スキップするGreasemonkeyスクリプト
