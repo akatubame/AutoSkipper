@@ -43,10 +43,13 @@ var array = {
 // メイン処理
 // -------------------------------------------------------
 (function () {
+	//alert(document.URL);
 	for (i in array) {
 		if ( document.URL.indexOf( array[i]["url"] ) != -1 ) {
 			if ( array[i]['title'] == '' || document.title.indexOf( array[i]['title'] ) > 0 ) {
+				//alert(document.title);
 				var e = XPathGetItem(array[i]['xpath']);
+				//alert(e.innerHTML);
 				if ( e.href && e.href.search("http") != -1 )
 					location.href = e.href;
 				else
