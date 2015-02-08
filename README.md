@@ -25,7 +25,7 @@ Firefox ver.35.0で動作確認済み。
 
 「設定項目」の説明にしたがって設定してください。  
 登録にはスキップしたいURLと認証ボタン（毎回クリックするAタグかINPUTタグ）をXPathで指定する必要があります。    
-(XPathについて詳しく知りたい場合は[こちら](https://ja.wikipedia.org/wiki/XML_Path_Language))  
+(XPathについて詳しく知りたい場合は[Wikipedia](https://ja.wikipedia.org/wiki/XML_Path_Language)が参考になります)  
 
 好きなだけURLとXPathのペアを登録したら、次はインストールに続きます。
 
