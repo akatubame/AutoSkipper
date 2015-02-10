@@ -73,15 +73,4 @@ function XPathGetItem(xpath)  {
 	var e = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 	return e.snapshotItem(0);
 }
-// XPathで該当HTMLを書き換え
-function setHTML(xpath, html)  {
-	var e = XPath(xpath)
-	// alert(e.snapshotItem(0).innerHTML); // デバッグ用
-	if (!e.snapshotLength) {
-		console.log('none');
-	} else {
-		console.log('replace: ' + xpath + ' <= ' + html);
-		var item = e.snapshotItem(0);
-		item.innerHTML = html;
-	}
-}
+
