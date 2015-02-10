@@ -63,11 +63,6 @@ var array = {
 // -------------------------------------------------------
 // 関数
 // -------------------------------------------------------
-// XPathで要素を取得
-function XPath(xpath)  {
-	var e = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
-	return e;
-}
 // XPathで要素をアイテムのみ取得
 function XPathGetItem(xpath)  {
 	var e = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
