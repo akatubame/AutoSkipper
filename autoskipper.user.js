@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name AutoSkipper
-// @namespace 'Auto Login Creator'
+// @namespace 'Akatubame - Auto Login Creator'
 // @grant none
 // ==/UserScript==
 
