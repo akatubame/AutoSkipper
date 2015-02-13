@@ -50,7 +50,7 @@ var array = {
 				//alert(document.title);
 				var e = XPathGetItem(array[i]['xpath']);
 				//alert(e.innerHTML);
-				if ( e.href && e.href.search("http") != -1 )
+				if ( e.href && e.href.indexOf("http://") != -1 )
 					location.href = e.href;
 				else
 					e.click();
