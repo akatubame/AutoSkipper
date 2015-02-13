@@ -1,16 +1,24 @@
 // ==UserScript==
 // @name AutoSkipper
 // @namespace 'Auto Login Creator'
-// @include http://www.blogger.com/blogin.g?blogspotURL=*
-// @include http://*.blogspot.jp/*
-// @include http://www.bookoffonline.co.jp/old/*
-// @include http://www.bookoffonline.co.jp/new/*
-// @include https://www.google.com/url?sa=i&source=images*
 // @grant none
 // ==/UserScript==
 
 // ---------------------------------------------------------------------------
 // 設定項目
+// ---------------------------------------------------------------------------
+//  ■スキップ処理を行うURLを登録
+//    @include http://www.*.com/*
+//   上記のようにワイルドカードで指定する。改行区切りで追加可能
+// ---------------------------------------------------------------------------
+// @include http://www.blogger.com/blogin.g?blogspotURL=*
+// @include http://*.blogspot.jp/*
+// @include http://www.bookoffonline.co.jp/old/*
+// @include http://www.bookoffonline.co.jp/new/*
+// @include https://www.google.com/url?sa=i&source=images*
+// 
+// ---------------------------------------------------------------------------
+// 設定項目その２
 // ---------------------------------------------------------------------------
 //   url：スキップ処理を行うURL
 //   title：スキップ処理を行うHTMLタイトル(絞り込み。空白だと任意のタイトルで処理を行う)
