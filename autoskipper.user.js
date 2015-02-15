@@ -2,8 +2,7 @@
 // @name AutoSkipper
 // @namespace 'Akatubame - Auto Login Creator'
 // @grant none
-// ==/UserScript==
-
+//
 // ---------------------------------------------------------------------------
 // 設定項目
 // ---------------------------------------------------------------------------
@@ -16,6 +15,7 @@
 // @include http://www.bookoffonline.co.jp/old/*
 // @include http://www.bookoffonline.co.jp/new/*
 // @include https://www.google.com/url?sa=i&source=images*
+// ==/UserScript==
 // 
 // ---------------------------------------------------------------------------
 // 設定項目その２
@@ -48,26 +48,38 @@ var array = {
 };
 
 // -------------------------------------------------------
+// 設定ここまで
+// -------------------------------------------------------
+//
+// -------------------------------------------------------
 // メイン処理
 // -------------------------------------------------------
 (function () {
-	//alert(document.URL);
-	for (i in array) {
-		if ( document.URL.indexOf( array[i]["url"] ) != -1 ) {
-			if ( array[i]['title'] == '' || document.title.indexOf( array[i]['title'] ) > 0 ) {
-				//alert(document.title);
-				var e = XPathGetItem(array[i]['xpath']);
-				//alert(e.innerHTML);
-				if ( e.href && e.href.indexOf("http://") != -1 )
-					location.href = e.href;
-				else
-					e.click();
-				Break;
-			}
-		}
+	// alert(document.URL); // デバッグ用 (コメントアウトでアラート表示)
+	for (i in site) {
+		
+		// URLのマッチ判定 (他サイトでの誤作動防止)
+		// alert( site[i]["url"] ); // デバッグ用
+		if ( document.URL.indexOf( site[i]["url"] ) == -1 )
+			continue;
+		
+		// タイトルのマッチ判定 (指定有の場合のみ。サイト内の無関係なページでの誤作動防止)
+		// alert( site[i]["title"] ); // デバッグ用
+		if ( site[i]['title'] != '' )
+			if ( document.title.indexOf( site[i]['title'] ) == -1 )
+				continue;
+		
+		// --- スキップ処理ここから --- //
+		var e = XPathGetItem( site[i]['xpath'] );
+		// alert(e.innerHTML); // デバッグ用
+		
+		// 対象がURLを含むAタグならページ移動、それ以外ならクリック
+		if ( e.href && e.href.indexOf("http://") != -1 )
+			location.href = e.href;
+		else
+			e.click();
 	}
 })();
-
 // -------------------------------------------------------
 // 関数
 // -------------------------------------------------------
