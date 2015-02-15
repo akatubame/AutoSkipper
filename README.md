@@ -2,7 +2,7 @@
 認証画面を自動スキップするGreasemonkeyスクリプト
 
 author: @akatubame
-/ date: 2015/02/06
+/ date: 2015/02/15
 / version: 0.1.0
 / 使用言語: Javascript([Greasemonkey](https://addons.mozilla.org/en-us/firefox/addon/greasemonkey/))
 
