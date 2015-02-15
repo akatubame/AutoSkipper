@@ -3,7 +3,7 @@
 
 author: @akatubame
 / date: 2015/02/06
-/ version: 0.0.1
+/ version: 0.1.0
 / 使用言語: Javascript([Greasemonkey](https://addons.mozilla.org/en-us/firefox/addon/greasemonkey/))
 
 ##■本ツールの説明
