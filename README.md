@@ -31,7 +31,7 @@ Firefox ver.35.0で動作確認済み。
 
 ###２．インストール
 
-設定を済ませた「AutoSkipper.user.js」をFirefoxウィンドウへDrag&Dropします。  
+設定を済ませた「autoskipper.user.js」をFirefoxウィンドウへDrag&Dropします。  
 するとインストール確認画面が出現しますので、「インストールする」をクリックして次に進んで下さい。  
 数秒でインストールが完了します。
 
