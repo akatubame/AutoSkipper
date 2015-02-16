@@ -56,7 +56,7 @@ var array = {
 // -------------------------------------------------------
 (function () {
 	// alert(document.URL); // デバッグ用 (コメントアウトでアラート表示)
-	for (i in site) {
+	for (var i in site) {
 		
 		// URLのマッチ判定 (他サイトでの誤作動防止)
 		// alert( site[i]["url"] ); // デバッグ用
