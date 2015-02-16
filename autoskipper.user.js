@@ -57,35 +57,50 @@ var array = {
 (function () {
 	// alert(document.URL); // デバッグ用 (コメントアウトでアラート表示)
 	for (var i in site) {
+		var thisSite = site[i];
 		
 		// URLのマッチ判定 (他サイトでの誤作動防止)
-		// alert( site[i]["url"] ); // デバッグ用
-		if ( document.URL.indexOf( site[i]["url"] ) == -1 )
+		// alert( thisSite["url"] ); // デバッグ用
+		if ( document.URL.indexOf( thisSite["url"] ) == -1 )
 			continue;
 		
 		// タイトルのマッチ判定 (指定有の場合のみ。サイト内の無関係なページでの誤作動防止)
-		// alert( site[i]["title"] ); // デバッグ用
-		if ( site[i]['title'] != '' )
-			if ( document.title.indexOf( site[i]['title'] ) == -1 )
+		// alert( thisSite["title"] ); // デバッグ用
+		if ( thisSite['title'] != '' )
+			if ( document.title.indexOf( thisSite['title'] ) == -1 )
 				continue;
 		
-		// --- スキップ処理ここから --- //
-		var e = XPathGetItem( site[i]['xpath'] );
-		// alert(e.innerHTML); // デバッグ用
-		
-		// 対象がURLを含むAタグならページ移動、それ以外ならクリック
-		if ( e.href && e.href.indexOf("http://") != -1 )
-			location.href = e.href;
-		else
-			e.click();
+		// クリック対象がURLを含むAタグならページ移動、それ以外ならクリック
+		// alert( thisSite["xpath"] ); // デバッグ用
+		if ( locationElementUrl( thisSite['xpath'] ) == 1 ) {
+			return;
+		}
+		else {
+			clickElement( thisSite['xpath'] );
+			return;
+		}
 	}
 })();
+
 // -------------------------------------------------------
 // 関数
 // -------------------------------------------------------
-// XPathで要素をアイテムのみ取得
-function XPathGetItem(xpath)  {
+// 指定XPathのノードを取得
+function getElementByXpath(xpath) {
 	var e = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 	return e.snapshotItem(0);
 }
-
+// 指定XPathのノードのhref属性値がURLなら、そのURLにページ移動
+function locationElementUrl(xpath) {
+	var e = getElementByXpath(xpath);
+	if ( e.href && e.href.search("https?:\/\/") != -1 ) {
+		location.href = e.href;
+		return 1;
+	}
+	return 0;
+}
+// 指定XPathのノードをクリック
+function clickElement(xpath) {
+	var e = getElementByXpath(xpath);
+	e.click();
+}
