@@ -14,7 +14,7 @@
 // @include http://*.blogspot.jp/*
 // @include http://www.bookoffonline.co.jp/old/*
 // @include http://www.bookoffonline.co.jp/new/*
-// @include https://www.google.com/url?sa=i&source=images*
+// @include https://www.google.com/url?sa=i*source=images*
 // ==/UserScript==
 // 
 // ---------------------------------------------------------------------------
@@ -24,7 +24,7 @@
 //   title：スキップ処理を行うHTMLタイトル(絞り込み。空白だと任意のタイトルで処理を行う)
 //   xpath：クリックする対象のAタグ、INPUTタグをXPathで指定
 // ---------------------------------------------------------------------------
-var site = {
+var webSite = {
 	blogger : {
 		url : 'www.blogger.com',
 		title : '',
@@ -56,27 +56,26 @@ var site = {
 // -------------------------------------------------------
 (function () {
 	// alert(document.URL); // デバッグ用 (コメントアウトでアラート表示)
-	for (var i in site) {
-		var thisSite = site[i];
+	for (var i in webSite) {
 		
 		// URLのマッチ判定 (他サイトでの誤作動防止)
-		// alert( thisSite["url"] ); // デバッグ用
-		if ( document.URL.indexOf( thisSite["url"] ) == -1 )
+		// alert( webSite[i].url ); // デバッグ用
+		if ( document.URL.indexOf( webSite[i].url ) == -1 )
 			continue;
 		
 		// タイトルのマッチ判定 (指定有の場合のみ。サイト内の無関係なページでの誤作動防止)
-		// alert( thisSite["title"] ); // デバッグ用
-		if ( thisSite['title'] != '' )
-			if ( document.title.indexOf( thisSite['title'] ) == -1 )
+		// alert( webSite[i].title ); // デバッグ用
+		if ( webSite[i].title != '' )
+			if ( document.title.indexOf( webSite[i].title ) == -1 )
 				continue;
 		
 		// クリック対象がURLを含むAタグならページ移動、それ以外ならクリック
-		// alert( thisSite["xpath"] ); // デバッグ用
-		if ( locationElementUrl( thisSite['xpath'] ) == 1 ) {
+		// alert( webSite[i].xpath ); // デバッグ用
+		if ( locationElementUrl( webSite[i].xpath ) == 1 ) {
 			return;
 		}
 		else {
-			clickElement( thisSite['xpath'] );
+			clickElement( webSite[i].xpath );
 			return;
 		}
 	}
